@@ -1,0 +1,14 @@
+{
+  "name": "barcelona-rental-monitor",
+  "version": "1.0.0",
+  "description": "Monitor de alquileres de larga estancia en Barcelona con foco en finques y administradores locales.",
+  "type": "module",
+  "scripts": {
+    "check": "node src/monitor.js check",
+    "watch": "node src/monitor.js watch",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

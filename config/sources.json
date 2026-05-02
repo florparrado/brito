@@ -1,0 +1,382 @@
+[
+  {
+    "name": "Finques Bou",
+    "website": "https://www.finquesbou.es/",
+    "zone": "Eixample / Barcelona",
+    "type": "finques",
+    "rentalUrls": [
+      "https://inmobiliariaenbarcelona.finquesbou.es/propiedades/alquiler/defecto",
+      "https://www.finquesbou.es/property-status/alquiler/?layout=grid"
+    ],
+    "contact": "finquesbou@finquesbou.es / 934 875 151",
+    "status": "active"
+  },
+  {
+    "name": "Finques Albalate",
+    "website": "https://www.finquesalbalate.com/es/inicio/",
+    "zone": "Eixample",
+    "type": "finques / administrador",
+    "rentalUrls": [
+      "https://www.finquesalbalate.com/es/inicio/"
+    ],
+    "contact": "934 540 050",
+    "status": "limited"
+  },
+  {
+    "name": "Finques Elias",
+    "website": "https://www.finqueselias.net/",
+    "zone": "Sagrada Familia / Eixample",
+    "type": "finques / patrimonio",
+    "rentalUrls": [
+      "https://www.finqueselias.net/"
+    ],
+    "contact": "info@finqueselias.com / 934 575 896",
+    "status": "limited"
+  },
+  {
+    "name": "Finques Grau",
+    "website": "https://www.finquesgrau.com/",
+    "zone": "Barcelona",
+    "type": "finques / patrimonio",
+    "rentalUrls": [
+      "https://www.finquesgrau.com/es/patrimonio",
+      "https://www.finquesgrau.com/es/servicios-inmobiliarios"
+    ],
+    "contact": "info@finquesgrau.com / 932 377 838",
+    "status": "limited"
+  },
+  {
+    "name": "Finques Huertas",
+    "website": "https://www.finqueshuertas.com/",
+    "zone": "Barcelona",
+    "type": "finques / patrimonio",
+    "rentalUrls": [
+      "https://www.finqueshuertas.com/"
+    ],
+    "contact": "website",
+    "status": "limited"
+  },
+  {
+    "name": "Finques Pamies",
+    "website": "https://finquespamies.com/",
+    "zone": "Barcelona",
+    "type": "finques / patrimonio",
+    "rentalUrls": [
+      "https://finquespamies.com/es/gestion-de-patrimonios/"
+    ],
+    "contact": "info@finquespamies.cat / 934 417 412",
+    "status": "limited"
+  },
+  {
+    "name": "Finques Chicote",
+    "website": "https://www.fincaschicote.es/",
+    "zone": "Eixample / Marina",
+    "type": "finques / administrador",
+    "rentalUrls": [
+      "https://www.fincaschicote.es/administrador-fincas-eixample/"
+    ],
+    "contact": "info@finqueschicote.es / 932 477 711",
+    "status": "limited"
+  },
+  {
+    "name": "Finques Josa",
+    "website": "https://finquesjosa.com/",
+    "zone": "Dreta de l'Eixample",
+    "type": "finques",
+    "rentalUrls": [
+      "https://finquesjosa.com/"
+    ],
+    "contact": "932 652 774",
+    "status": "limited"
+  },
+  {
+    "name": "Finques Aixala",
+    "website": "https://finquesaixala.com/",
+    "zone": "Dreta de l'Eixample",
+    "type": "finques",
+    "rentalUrls": [
+      "https://finquesaixala.com/"
+    ],
+    "contact": "pau@finquesaixala.com / 932 655 012",
+    "status": "limited"
+  },
+  {
+    "name": "Finques Olivares",
+    "website": "https://fincasolivares.com/",
+    "zone": "Eixample / Gracia",
+    "type": "finques",
+    "rentalUrls": [
+      "https://fincasolivares.com/"
+    ],
+    "contact": "934 872 216",
+    "status": "limited"
+  },
+  {
+    "name": "Basmi Finques",
+    "website": "https://www.basmifinques.com/",
+    "zone": "Rambla Catalunya / Ciutat Vella",
+    "type": "finques / patrimonio",
+    "rentalUrls": [
+      "https://www.basmifinques.com/"
+    ],
+    "contact": "info@basmifinques.com / 932 154 560",
+    "status": "active"
+  },
+  {
+    "name": "Bourgeois Fincas",
+    "website": "https://www.bourgeoisfincas.com/",
+    "zone": "Barcelona",
+    "type": "administrador / patrimonio",
+    "rentalUrls": [
+      "https://www.bourgeoisfincas.com/"
+    ],
+    "contact": "website",
+    "status": "limited"
+  },
+  {
+    "name": "La Gran Urbe",
+    "website": "https://lagranurbe.com/",
+    "zone": "Barcelona",
+    "type": "administrador / patrimonio",
+    "rentalUrls": [
+      "https://lagranurbe.com/"
+    ],
+    "contact": "info@lagranurbe.com / 933 172 569",
+    "status": "limited"
+  },
+  {
+    "name": "FINOR BCN",
+    "website": "https://www.finorbcn.com/",
+    "zone": "Dreta de l'Eixample",
+    "type": "administrador / patrimonio",
+    "rentalUrls": [
+      "https://www.finorbcn.com/",
+      "https://www.finorbcn.com/administrador-fincas-la-dreta-de-leixample",
+      "https://www.finorbcn.com/administrador-fincas-carrer-de-diputacio"
+    ],
+    "contact": "finor@finorbcn.com / 934 876 806",
+    "status": "limited"
+  },
+  {
+    "name": "Carbonell",
+    "website": "https://www.carbonell.com/es/",
+    "zone": "Barcelona",
+    "type": "administrador / inmobiliaria",
+    "rentalUrls": [
+      "https://www.carbonell.com/es/"
+    ],
+    "contact": "website",
+    "status": "limited"
+  },
+  {
+    "name": "Cleries",
+    "website": "https://www.cleries.com/",
+    "zone": "Casp / Eixample",
+    "type": "administrador / patrimonio",
+    "rentalUrls": [
+      "https://www.cleries.com/es/servicios/gesti%C3%B3n-de-patrimonios/"
+    ],
+    "contact": "finques@cleries.com / comercial@cleries.com",
+    "status": "limited"
+  },
+  {
+    "name": "Diaz Associats",
+    "website": "https://www.finquesdiazassociats.es/",
+    "zone": "Eixample",
+    "type": "administrador / alquileres",
+    "rentalUrls": [
+      "https://www.finquesdiazassociats.es/"
+    ],
+    "contact": "website",
+    "status": "limited"
+  },
+  {
+    "name": "Grup Solfinc",
+    "website": "https://www.solfinc.com/es/",
+    "zone": "Eixample / Sagrada Familia / Gracia",
+    "type": "administrador / inmobiliaria",
+    "rentalUrls": [
+      "https://www.solfinc.com/es/inmobiliaria-eixample/",
+      "https://www.solfinc.com/es/administracion-de-patrimonio-eixample/"
+    ],
+    "contact": "website",
+    "status": "active"
+  },
+  {
+    "name": "ZonaPisos / Zona Finques",
+    "website": "https://www.zonapisos.cat/",
+    "zone": "Born / La Ribera / Ciutat Vella",
+    "type": "finques / inmobiliaria local",
+    "rentalUrls": [
+      "https://www.zonapisos.cat/"
+    ],
+    "contact": "932 682 442",
+    "status": "active"
+  },
+  {
+    "name": "AFS Finques",
+    "website": "https://www.afsfinques.com/es/empresa",
+    "zone": "Born / Ciutat Vella",
+    "type": "finques",
+    "rentalUrls": [
+      "https://www.afsfinques.com/es/empresa"
+    ],
+    "contact": "finquesafs@gmail.com / 932 687 105",
+    "status": "limited"
+  },
+  {
+    "name": "Cambra de la Propietat Urbana de Barcelona",
+    "website": "https://www.cpubcn.com/",
+    "zone": "Barcelona",
+    "type": "patrimonio / alquileres",
+    "rentalUrls": [
+      "https://www.cpubcn.com/es/servei/administracion-de-fincas/"
+    ],
+    "contact": "website",
+    "status": "limited"
+  },
+  {
+    "name": "Forcadell Eixample",
+    "website": "https://forcadell.com/inmobiliaria-eixample/",
+    "zone": "Eixample",
+    "type": "agencia mediana",
+    "rentalUrls": [
+      "https://forcadell.com/inmobiliaria-eixample/"
+    ],
+    "contact": "info@forcadell.com / 934 965 400",
+    "status": "active"
+  },
+  {
+    "name": "Welhome Barcelona",
+    "website": "https://www.welhomebarcelona.com/",
+    "zone": "Barcelona",
+    "type": "agencia mediana",
+    "rentalUrls": [
+      "https://www.welhomebarcelona.com/",
+      "https://www.welhomebarcelona.com/alquiler-alquiler-venta-pisos.html"
+    ],
+    "contact": "info@welhomebarcelona.com / 661 416 906",
+    "status": "active"
+  },
+  {
+    "name": "Fincador",
+    "website": "https://www.fincador.com/",
+    "zone": "Eixample",
+    "type": "agencia local",
+    "rentalUrls": [
+      "https://www.fincador.com/"
+    ],
+    "contact": "934 575 652",
+    "status": "active"
+  },
+  {
+    "name": "LumaGestions",
+    "website": "https://lumagestions.com/",
+    "zone": "Barcelona",
+    "type": "agencia local",
+    "rentalUrls": [
+      "https://lumagestions.com/"
+    ],
+    "contact": "website",
+    "status": "active"
+  },
+  {
+    "name": "BunikHome",
+    "website": "https://www.bunikhome.com/",
+    "zone": "Dreta de l'Eixample",
+    "type": "agencia boutique",
+    "rentalUrls": [
+      "https://www.bunikhome.com/"
+    ],
+    "contact": "615 118 359 / 652 936 797",
+    "status": "active"
+  },
+  {
+    "name": "Urbane",
+    "website": "https://www.urbanegroup.es/",
+    "zone": "Eixample / Born / Ciutat Vella",
+    "type": "agencia mediana",
+    "rentalUrls": [
+      "https://www.urbanegroup.es/"
+    ],
+    "contact": "935 193 057",
+    "status": "active"
+  },
+  {
+    "name": "aProperties Barcelona Centro",
+    "website": "https://www.aproperties.es/pisos-alquiler-barcelona-centro",
+    "zone": "Barcelona centro",
+    "type": "agencia mediana",
+    "rentalUrls": [
+      "https://www.aproperties.es/pisos-alquiler-barcelona-centro"
+    ],
+    "contact": "website",
+    "status": "active"
+  },
+  {
+    "name": "Atipika",
+    "website": "https://www.atipika.com/",
+    "zone": "Eixample / Barcelona",
+    "type": "agencia mediana",
+    "rentalUrls": [
+      "https://www.atipika.com/"
+    ],
+    "contact": "website",
+    "status": "active"
+  },
+  {
+    "name": "All4Flat",
+    "website": "https://www.all4flat.com/",
+    "zone": "Eixample / Barcelona",
+    "type": "agencia mediana",
+    "rentalUrls": [
+      "https://www.all4flat.com/"
+    ],
+    "contact": "website",
+    "status": "active"
+  },
+  {
+    "name": "Max Ricart",
+    "website": "https://www.maxricart.com/",
+    "zone": "Eixample / Barcelona",
+    "type": "agencia mediana",
+    "rentalUrls": [
+      "https://www.maxricart.com/"
+    ],
+    "contact": "website",
+    "status": "active"
+  },
+  {
+    "name": "Pisos.com Dreta Eixample",
+    "website": "https://www.pisos.com/",
+    "zone": "Dreta de l'Eixample",
+    "type": "portal respaldo",
+    "rentalUrls": [
+      "https://www.pisos.com/alquiler/pisos-la_dreta_de_eixample/con-3-habitaciones/desde-80-m2/hasta-2100/"
+    ],
+    "contact": "portal",
+    "status": "active"
+  },
+  {
+    "name": "Idealista Dreta Eixample",
+    "website": "https://www.idealista.com/",
+    "zone": "Dreta de l'Eixample",
+    "type": "portal respaldo",
+    "rentalUrls": [
+      "https://www.idealista.com/alquiler-viviendas/barcelona/eixample/la-dreta-de-l-eixample/con-de-tres-dormitorios/"
+    ],
+    "contact": "portal",
+    "status": "active"
+  },
+  {
+    "name": "Rentola Centro Barcelona",
+    "website": "https://rentola.es/",
+    "zone": "Centro Barcelona",
+    "type": "portal respaldo",
+    "rentalUrls": [
+      "https://rentola.es/alquiler/pisos/barcelona/centro"
+    ],
+    "contact": "portal",
+    "status": "active"
+  }
+]
