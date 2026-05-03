@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Monitor de alquileres</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Barcelona rental monitor</p>
+          <h1>Dashboard</h1>
+        </div>
+        <div class="actions">
+          <span id="last-refresh" class="muted">Sin cargar</span>
+          <button id="refresh">Actualizar</button>
+        </div>
+      </header>
+
+      <section id="setup" class="panel hidden">
+        <div>
+          <h2>Configuracion local</h2>
+          <p>Esto se guarda solo en esta computadora para que el dashboard pueda leer la memoria de Upstash.</p>
+        </div>
+        <form id="config-form" class="config-grid">
+          <label>
+            Upstash REST URL
+            <input name="upstashUrl" placeholder="https://..." autocomplete="off" />
+          </label>
+          <label>
+            Upstash REST Token
+            <input name="upstashToken" type="password" autocomplete="off" />
+          </label>
+          <label>
+            State key
+            <input name="stateKey" value="barcelona-rental-monitor:state" />
+          </label>
+          <label>
+            GitHub repo
+            <input name="githubRepo" value="florparrado/brito" />
+          </label>
+          <button type="submit">Guardar configuracion</button>
+        </form>
+      </section>
+
+      <section class="metrics">
+        <article><span>Fuentes revisadas</span><strong id="checked-sources">-</strong></article>
+        <article><span>Exitosas</span><strong id="successful-sources">-</strong></article>
+        <article><span>Parciales</span><strong id="partial-sources">-</strong></article>
+        <article><span>Fallidas</span><strong id="failed-sources">-</strong></article>
+        <article><span>Nuevas alertas</span><strong id="new-alerts">-</strong></article>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <h2>Ultima ejecucion</h2>
+          <dl id="last-run" class="details"></dl>
+        </article>
+        <article class="panel">
+          <h2>GitHub Actions</h2>
+          <div id="github-runs" class="list"></div>
+        </article>
+      </section>
+
+      <section class="panel">
+        <h2>Fuentes</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Fuente</th>
+                <th>Estado</th>
+                <th>Zona</th>
+                <th>Alertas</th>
+                <th>Ultimo error</th>
+              </tr>
+            </thead>
+            <tbody id="sources"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <h2>Errores recientes</h2>
+          <div id="errors" class="list"></div>
+        </article>
+        <article class="panel">
+          <h2>Historial</h2>
+          <div id="history" class="list"></div>
+        </article>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>

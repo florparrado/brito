@@ -44,6 +44,22 @@ node src/monitor.js simulate --dry-run
 
 Si tienes `npm` instalado, tambien puedes usar `npm run check`, `npm run watch` y `npm test`.
 
+## Dashboard local
+
+Abrir el dashboard:
+
+```bash
+node dashboard/server.js
+```
+
+Luego entra a:
+
+```text
+http://127.0.0.1:4173
+```
+
+La primera vez pega ahi los datos de Upstash. Se guardan localmente en `data/dashboard-config.json`, para que el dashboard pueda leer historial, errores, fuentes y alertas sin pedirlos otra vez.
+
 ## Arranque automatico en macOS
 
 Hay una plantilla en `scripts/launchd.plist.example` para ejecutarlo cada 15 minutos con `launchd`.

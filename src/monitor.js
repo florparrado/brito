@@ -493,15 +493,33 @@ async function sendTelegram(text, options) {
 async function checkSource(source, state, options) {
   const findings = [];
   const errors = [];
+  const report = {
+    name: source.name,
+    type: source.type,
+    zone: source.zone,
+    status: "failed",
+    checkedAt: new Date().toISOString(),
+    attemptedUrls: 0,
+    successfulUrls: 0,
+    failedUrls: 0,
+    candidatesFound: 0,
+    newAlerts: 0,
+    errors: []
+  };
   const urls = source.rentalUrls?.length ? source.rentalUrls : [source.website];
 
   for (const url of urls) {
+    report.attemptedUrls += 1;
     try {
       const { ok, status, body } = await fetchText(url);
       if (!ok) {
-        errors.push(`${source.name}: ${url} devolvio ${status}`);
+        const message = `${source.name}: ${url} devolvio ${status}`;
+        errors.push(message);
+        report.errors.push(message);
+        report.failedUrls += 1;
         continue;
       }
+      report.successfulUrls += 1;
 
       const pageHash = hash(body);
       const pageKey = hash(`${source.name}|${url}`);
@@ -511,6 +529,7 @@ async function checkSource(source, state, options) {
 
       const rawCandidates = extractCandidatesFromPage({ source, url, html: body });
       const classified = rawCandidates.map((candidate) => classifyCandidate(candidate, options));
+      report.candidatesFound += rawCandidates.length;
 
       for (const candidate of classified) {
         if (candidate.priority === "descartar") continue;
@@ -529,6 +548,7 @@ async function checkSource(source, state, options) {
           rooms: candidate.rooms
         };
         findings.push(candidate);
+        report.newAlerts += 1;
       }
 
       if (options.notifyPageChanges && previousPageHash && previousPageHash !== pageHash && findings.length === 0) {
@@ -548,49 +568,125 @@ async function checkSource(source, state, options) {
             priority: "revisar",
             reasons: ["cambio de pagina sin ficha estructurada"]
           });
+          report.newAlerts += 1;
         }
       }
     } catch (error) {
-      errors.push(`${source.name}: ${url} fallo (${error.message})`);
+      const message = `${source.name}: ${url} fallo (${error.message})`;
+      errors.push(message);
+      report.errors.push(message);
+      report.failedUrls += 1;
     }
   }
 
-  return { findings, errors };
+  if (report.successfulUrls > 0 && report.failedUrls === 0) report.status = "success";
+  else if (report.successfulUrls > 0) report.status = "partial";
+
+  return { findings, errors, report };
 }
 
 export async function runCheck(options = getOptions()) {
+  const startedAt = new Date().toISOString();
   const sources = await loadJson(options.sourcesFile, []);
   const state = await loadState(options);
   const activeSources = sources.filter((source) => source.status !== "paused");
   const allFindings = [];
   const allErrors = [];
+  const sourceReports = [];
 
   for (const source of activeSources) {
-    const { findings, errors } = await checkSource(source, state, options);
+    const { findings, errors, report } = await checkSource(source, state, options);
     allFindings.push(...findings);
     allErrors.push(...errors);
+    sourceReports.push(report);
   }
 
   for (const finding of allFindings) {
     await sendTelegram(formatAlert(finding), options);
   }
 
+  const finishedAt = new Date().toISOString();
+  const summary = recordRunSummary(state, {
+    startedAt,
+    finishedAt,
+    checkedSources: activeSources.length,
+    successfulSources: sourceReports.filter((report) => report.status === "success").length,
+    partialSources: sourceReports.filter((report) => report.status === "partial").length,
+    failedSources: sourceReports.filter((report) => report.status === "failed").length,
+    attemptedUrls: sourceReports.reduce((total, report) => total + report.attemptedUrls, 0),
+    successfulUrls: sourceReports.reduce((total, report) => total + report.successfulUrls, 0),
+    failedUrls: sourceReports.reduce((total, report) => total + report.failedUrls, 0),
+    newAlerts: allFindings.length,
+    errors: allErrors,
+    sourceReports,
+    stateBackend: options.stateBackend
+  });
+
   await saveState(options, state);
 
-  console.log(
-    JSON.stringify(
-      {
-        checkedSources: activeSources.length,
-        newAlerts: allFindings.length,
-        stateBackend: options.stateBackend,
-        errors: allErrors
-      },
-      null,
-      2
-    )
-  );
+  console.log(JSON.stringify(summary, null, 2));
 
   return { findings: allFindings, errors: allErrors };
+}
+
+function recordRunSummary(state, summary) {
+  const run = {
+    id: hash(`${summary.startedAt}|${summary.finishedAt}`),
+    ...summary
+  };
+
+  state.runs ??= [];
+  state.runs.unshift(run);
+  state.runs = state.runs.slice(0, 120);
+
+  state.sourceStats ??= {};
+  for (const report of summary.sourceReports) {
+    const current = state.sourceStats[report.name] || {
+      name: report.name,
+      type: report.type,
+      zone: report.zone,
+      successCount: 0,
+      partialCount: 0,
+      failureCount: 0,
+      totalNewAlerts: 0
+    };
+    current.lastStatus = report.status;
+    current.lastCheckedAt = report.checkedAt;
+    current.lastError = report.errors.at(-1) || null;
+    current.lastNewAlerts = report.newAlerts;
+    current.successCount += report.status === "success" ? 1 : 0;
+    current.partialCount += report.status === "partial" ? 1 : 0;
+    current.failureCount += report.status === "failed" ? 1 : 0;
+    current.totalNewAlerts += report.newAlerts;
+    state.sourceStats[report.name] = current;
+  }
+
+  state.alertLog ??= [];
+  for (const report of summary.sourceReports) {
+    if (report.newAlerts > 0) {
+      state.alertLog.unshift({
+        runId: run.id,
+        sourceName: report.name,
+        count: report.newAlerts,
+        createdAt: summary.finishedAt
+      });
+    }
+  }
+  state.alertLog = state.alertLog.slice(0, 120);
+
+  return {
+    id: run.id,
+    checkedSources: summary.checkedSources,
+    successfulSources: summary.successfulSources,
+    partialSources: summary.partialSources,
+    failedSources: summary.failedSources,
+    attemptedUrls: summary.attemptedUrls,
+    successfulUrls: summary.successfulUrls,
+    failedUrls: summary.failedUrls,
+    newAlerts: summary.newAlerts,
+    stateBackend: summary.stateBackend,
+    errors: summary.errors
+  };
 }
 
 async function runWatch(options) {

@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "check": "node src/monitor.js check",
+    "dashboard": "node dashboard/server.js",
     "watch": "node src/monitor.js watch",
     "test": "node --test"
   },

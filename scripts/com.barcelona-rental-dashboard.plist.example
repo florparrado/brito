@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.barcelona-rental-dashboard</string>
+  <key>WorkingDirectory</key>
+  <string>/Users/florenciaparradoricca/Documents/Dpto</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Applications/Codex.app/Contents/Resources/node</string>
+    <string>/Users/florenciaparradoricca/Documents/Dpto/dashboard/server.js</string>
+  </array>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>StandardOutPath</key>
+  <string>/Users/florenciaparradoricca/Documents/Dpto/data/dashboard.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/florenciaparradoricca/Documents/Dpto/data/dashboard.err.log</string>
+</dict>
+</plist>
