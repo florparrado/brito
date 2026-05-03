@@ -3,95 +3,152 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Monitor de alquileres</title>
+    <title>Flora monitor</title>
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <main class="shell">
       <header class="topbar">
-        <div>
-          <p class="eyebrow">Barcelona rental monitor</p>
-          <h1>Dashboard</h1>
-        </div>
-        <div class="actions">
-          <span id="last-refresh" class="muted">Sin cargar</span>
-          <button id="refresh">Actualizar</button>
-        </div>
+        <a class="brand" href="https://flora.quest/" target="_blank" rel="noreferrer" aria-label="Flora">
+          <span class="brand-mark">F</span>
+          <span>Flora monitor</span>
+        </a>
+        <nav class="tabs" aria-label="Dashboard sections">
+          <button class="tab active" data-tab="panel">Panel</button>
+          <button class="tab" data-tab="log">Log</button>
+          <button class="tab" data-tab="system">Sistema</button>
+          <button class="tab" data-tab="config">Configuración</button>
+        </nav>
+        <button id="refresh" class="refresh">Actualizar</button>
       </header>
 
-      <section id="setup" class="panel hidden">
-        <div>
-          <h2>Configuracion local</h2>
-          <p>Esto se guarda solo en esta computadora para que el dashboard pueda leer la memoria de Upstash.</p>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Rental watch, Barcelona</p>
+          <h1>Control tranquilo para una búsqueda salvaje.</h1>
+          <p id="hero-status">Cargando estado del monitor...</p>
         </div>
-        <form id="config-form" class="config-grid">
-          <label>
-            Upstash REST URL
-            <input name="upstashUrl" placeholder="https://..." autocomplete="off" />
-          </label>
-          <label>
-            Upstash REST Token
-            <input name="upstashToken" type="password" autocomplete="off" />
-          </label>
-          <label>
-            State key
-            <input name="stateKey" value="barcelona-rental-monitor:state" />
-          </label>
-          <label>
-            GitHub repo
-            <input name="githubRepo" value="florparrado/brito" />
-          </label>
-          <button type="submit">Guardar configuracion</button>
-        </form>
-      </section>
-
-      <section class="metrics">
-        <article><span>Fuentes revisadas</span><strong id="checked-sources">-</strong></article>
-        <article><span>Exitosas</span><strong id="successful-sources">-</strong></article>
-        <article><span>Parciales</span><strong id="partial-sources">-</strong></article>
-        <article><span>Fallidas</span><strong id="failed-sources">-</strong></article>
-        <article><span>Nuevas alertas</span><strong id="new-alerts">-</strong></article>
-      </section>
-
-      <section class="grid">
-        <article class="panel">
-          <h2>Ultima ejecucion</h2>
-          <dl id="last-run" class="details"></dl>
-        </article>
-        <article class="panel">
-          <h2>GitHub Actions</h2>
-          <div id="github-runs" class="list"></div>
-        </article>
-      </section>
-
-      <section class="panel">
-        <h2>Fuentes</h2>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Fuente</th>
-                <th>Estado</th>
-                <th>Zona</th>
-                <th>Alertas</th>
-                <th>Ultimo error</th>
-              </tr>
-            </thead>
-            <tbody id="sources"></tbody>
-          </table>
+        <div class="art art-one" aria-hidden="true">
+          <span></span><span></span><span></span>
         </div>
       </section>
 
-      <section class="grid">
-        <article class="panel">
-          <h2>Errores recientes</h2>
+      <section class="view active" id="panel-view">
+        <section class="metrics">
+          <article class="metric blue"><span>Fuentes revisadas</span><strong id="checked-sources">-</strong></article>
+          <article class="metric cream"><span>Exitosas</span><strong id="successful-sources">-</strong></article>
+          <article class="metric peach"><span>Parciales</span><strong id="partial-sources">-</strong></article>
+          <article class="metric wine"><span>Fallidas</span><strong id="failed-sources">-</strong></article>
+          <article class="metric gold"><span>Nuevas alertas</span><strong id="new-alerts">-</strong></article>
+        </section>
+
+        <section class="main-grid">
+          <article class="panel activity-panel">
+            <div class="section-heading">
+              <p class="eyebrow">Último recorrido</p>
+              <h2>Dónde se fijó últimamente</h2>
+            </div>
+            <div id="recent-activity" class="activity-list"></div>
+          </article>
+          <article class="panel summary-panel">
+            <div class="section-heading">
+              <p class="eyebrow">Resumen</p>
+              <h2>Estado actual</h2>
+            </div>
+            <dl id="quick-summary" class="details"></dl>
+          </article>
+        </section>
+      </section>
+
+      <section class="view" id="log-view">
+        <section class="panel">
+          <div class="section-heading">
+            <p class="eyebrow">Fuentes</p>
+            <h2>Historial por inmobiliaria</h2>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Fuente</th>
+                  <th>Estado</th>
+                  <th>Zona</th>
+                  <th>Alertas</th>
+                  <th>Último error</th>
+                </tr>
+              </thead>
+              <tbody id="sources"></tbody>
+            </table>
+          </div>
+        </section>
+        <section class="panel">
+          <div class="section-heading">
+            <p class="eyebrow">Problemas</p>
+            <h2>Errores recientes</h2>
+          </div>
           <div id="errors" class="list"></div>
-        </article>
-        <article class="panel">
-          <h2>Historial</h2>
-          <div id="history" class="list"></div>
-        </article>
+        </section>
       </section>
+
+      <section class="view" id="system-view">
+        <section class="main-grid">
+          <article class="panel">
+            <div class="section-heading">
+              <p class="eyebrow">GitHub</p>
+              <h2>Automatizaciones</h2>
+            </div>
+            <div id="github-runs" class="list"></div>
+          </article>
+          <article class="panel">
+            <div class="section-heading">
+              <p class="eyebrow">Auditoría</p>
+              <h2>Última ejecución</h2>
+            </div>
+            <dl id="last-run" class="details"></dl>
+          </article>
+        </section>
+        <section class="panel">
+          <div class="section-heading">
+            <p class="eyebrow">Historial</p>
+            <h2>Últimas pasadas</h2>
+          </div>
+          <div id="history" class="list"></div>
+        </section>
+      </section>
+
+      <section class="view" id="config-view">
+        <section class="panel setup-panel">
+          <div class="section-heading">
+            <p class="eyebrow">Configuración local</p>
+            <h2>Conexión a Upstash</h2>
+          </div>
+          <p class="soft-copy">Esto queda guardado solo en esta computadora para que el dashboard pueda leer la memoria del monitor.</p>
+          <form id="config-form" class="config-grid">
+            <label>
+              Upstash REST URL
+              <input name="upstashUrl" placeholder="https://..." autocomplete="off" />
+            </label>
+            <label>
+              Upstash REST Token
+              <input name="upstashToken" type="password" autocomplete="off" />
+            </label>
+            <label>
+              State key
+              <input name="stateKey" value="barcelona-rental-monitor:state" />
+            </label>
+            <label>
+              GitHub repo
+              <input name="githubRepo" value="florparrado/brito" />
+            </label>
+            <button type="submit">Guardar configuración</button>
+          </form>
+        </section>
+      </section>
+
+      <footer class="footer">
+        <span id="last-refresh">Sin cargar</span>
+        <span>Flora · rental monitor</span>
+      </footer>
     </main>
     <script src="/app.js"></script>
   </body>
