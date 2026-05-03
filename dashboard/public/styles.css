@@ -63,7 +63,6 @@ body {
   font-weight: 800;
   letter-spacing: 0;
   font-family: var(--heading-font);
-  text-transform: uppercase;
 }
 
 .brand-mark {
@@ -114,7 +113,6 @@ h2 {
   font-size: clamp(16px, 2vw, 22px);
   line-height: 1;
   letter-spacing: 0;
-  text-transform: uppercase;
 }
 
 .view {
@@ -150,7 +148,6 @@ h2 {
   color: var(--ink);
   font-size: 14px;
   font-weight: 700;
-  text-transform: uppercase;
   font-family: var(--heading-font);
 }
 
@@ -238,7 +235,6 @@ h2 {
   padding: 3px 8px;
   font-size: 11px;
   font-weight: 800;
-  text-transform: uppercase;
 }
 
 .success { background: var(--blue); color: var(--ink); }
@@ -287,7 +283,6 @@ td {
 th {
   color: var(--wine);
   font-size: 12px;
-  text-transform: uppercase;
 }
 
 label {
