@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap");
 
+@font-face {
+  font-family: "PP Right Gothic";
+  src: url("/fonts/PPRightGothic-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   color-scheme: light;
   --cream: #f3ede2;
@@ -16,13 +24,18 @@
   --gray: #9e9d97;
 }
 
+:root {
+  --heading-font: "PP Right Gothic", "Geist", ui-sans-serif, system-ui, sans-serif;
+  --body-font: "Geist", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
   background: var(--cream);
   color: var(--ink);
-  font-family: "Geist", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--body-font);
 }
 
 .shell {
@@ -49,6 +62,8 @@ body {
   text-decoration: none;
   font-weight: 800;
   letter-spacing: 0;
+  font-family: var(--heading-font);
+  text-transform: uppercase;
 }
 
 .brand-mark {
@@ -59,6 +74,7 @@ body {
   background: var(--ink);
   color: var(--paper);
   border-radius: 50%;
+  font-family: var(--heading-font);
 }
 
 .tabs {
@@ -94,9 +110,11 @@ p {
 }
 
 h2 {
+  font-family: var(--heading-font);
   font-size: clamp(16px, 2vw, 22px);
   line-height: 1;
   letter-spacing: 0;
+  text-transform: uppercase;
 }
 
 .view {
@@ -133,9 +151,11 @@ h2 {
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
+  font-family: var(--heading-font);
 }
 
 .metric strong {
+  font-family: var(--heading-font);
   font-size: clamp(40px, 5vw, 66px);
   line-height: 0.85;
   font-weight: 800;
