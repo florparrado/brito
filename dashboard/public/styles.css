@@ -175,10 +175,9 @@ h2 {
   margin-bottom: 14px;
 }
 
-.panel {
-  background: rgba(255, 250, 240, 0.86);
-  border: 1px solid var(--line);
-  padding: 12px;
+.plain-section {
+  border-top: 1px solid var(--line);
+  padding: 14px 0 18px;
 }
 
 .section-heading {
@@ -197,9 +196,10 @@ h2 {
 .item {
   display: grid;
   gap: 6px;
-  border: 1px solid rgba(29, 23, 18, 0.28);
-  background: rgba(255, 250, 240, 0.72);
-  padding: 8px 10px;
+  border: 0;
+  border-top: 1px solid rgba(29, 23, 18, 0.28);
+  background: transparent;
+  padding: 9px 0;
 }
 
 .activity-item {
@@ -234,7 +234,7 @@ h2 {
 .badge {
   display: inline-flex;
   align-items: center;
-  border: 1px solid var(--line);
+  border: 0;
   padding: 3px 8px;
   font-size: 11px;
   font-weight: 800;
@@ -279,7 +279,7 @@ table {
 th,
 td {
   border-bottom: 1px solid rgba(29, 23, 18, 0.25);
-  padding: 12px 10px;
+  padding: 12px 0;
   text-align: left;
   vertical-align: top;
 }
