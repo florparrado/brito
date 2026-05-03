@@ -25,6 +25,9 @@ const server = http.createServer(async (request, response) => {
     if (request.method === "GET" && url.pathname === "/app.js") {
       return sendFile(response, path.join(publicDir, "app.js"), "text/javascript; charset=utf-8");
     }
+    if (request.method === "GET" && url.pathname === "/favicon.svg") {
+      return sendFile(response, path.join(publicDir, "favicon.svg"), "image/svg+xml; charset=utf-8");
+    }
     if (request.method === "GET" && url.pathname.startsWith("/fonts/")) {
       const fontName = path.basename(url.pathname);
       return sendFile(response, path.join(publicDir, "fonts", fontName), "font/otf");
