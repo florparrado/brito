@@ -33,10 +33,6 @@ async function loadDashboard() {
   const data = await response.json();
   document.querySelector("#last-refresh").textContent = `Actualizado ${formatDate(data.generatedAt)}`;
 
-  if (!data.config?.hasUpstash) {
-    document.querySelector("#hero-status").textContent = "Falta conectar Upstash en Configuración.";
-  }
-
   const state = data.state || {};
   const lastRun = state.runs?.[0];
   setText("#checked-sources", lastRun?.checkedSources ?? "-");

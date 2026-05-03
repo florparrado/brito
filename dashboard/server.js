@@ -42,7 +42,7 @@ const server = http.createServer(async (request, response) => {
     if (request.method === "GET" && url.pathname === "/api/summary") {
       const config = await getConfig();
       const [stateResult, githubResult] = await Promise.all([
-        loadMonitorState(config),
+        loadDashboardState(config),
         loadGithubRuns(config.githubRepo || defaultRepo)
       ]);
       return sendJson(response, {
@@ -109,6 +109,38 @@ async function loadMonitorState(config) {
     return { state: result ? JSON.parse(result) : { seen: {}, pages: {}, runs: [] }, error: null };
   } catch (error) {
     return { state: null, error: error.message };
+  }
+}
+
+async function loadDashboardState(config) {
+  if (config.upstashUrl && config.upstashToken) {
+    return loadMonitorState(config);
+  }
+
+  const repo = config.githubRepo || defaultRepo;
+  try {
+    const response = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/dashboard-status.json`, {
+      headers: { "user-agent": "barcelona-rental-dashboard" }
+    });
+    if (!response.ok) {
+      throw new Error(`GitHub status devolvio ${response.status}`);
+    }
+    const status = await response.json();
+    return {
+      state: {
+        runs: status.runs || [],
+        sourceStats: status.sourceStats || {},
+        alertLog: status.alertLog || [],
+        seen: Object.fromEntries(Array.from({ length: status.seenCount || 0 }, (_, index) => [`seen-${index}`, true])),
+        pages: Object.fromEntries(Array.from({ length: status.pageCount || 0 }, (_, index) => [`page-${index}`, true]))
+      },
+      error: null
+    };
+  } catch (error) {
+    return {
+      state: null,
+      error: "Todavía no hay estado publicado en GitHub. El próximo run lo va a generar."
+    };
   }
 }
 

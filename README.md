@@ -58,7 +58,7 @@ Luego entra a:
 http://127.0.0.1:4173
 ```
 
-La primera vez pega ahi los datos de Upstash. Se guardan localmente en `data/dashboard-config.json`, para que el dashboard pueda leer historial, errores, fuentes y alertas sin pedirlos otra vez.
+El dashboard lee por defecto `data/dashboard-status.json`, que GitHub Actions actualiza después de cada pasada. No hace falta pegar secretos localmente. La pestaña de configuración queda solo para depurar con Upstash si alguna vez hace falta.
 
 ## Arranque automatico en macOS
 

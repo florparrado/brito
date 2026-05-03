@@ -9,6 +9,9 @@ concurrency:
   group: rental-monitor
   cancel-in-progress: false
 
+permissions:
+  contents: write
+
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -34,3 +37,18 @@ jobs:
           MIN_ROOMS: "3"
           MIN_AREA: "80"
         run: node src/monitor.js check
+
+      - name: Export dashboard status
+        env:
+          UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+          STATE_KEY: barcelona-rental-monitor:state
+        run: node scripts/export-dashboard-status.js
+
+      - name: Publish dashboard status
+        run: |
+          git config user.name "Flora monitor"
+          git config user.email "actions@github.com"
+          git add data/dashboard-status.json
+          git diff --cached --quiet || git commit -m "Update dashboard status"
+          git push
