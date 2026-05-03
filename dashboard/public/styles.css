@@ -25,23 +25,10 @@ body {
   font-family: "Geist", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 8% 18%, rgba(185, 205, 210, 0.75) 0 88px, transparent 89px),
-    radial-gradient(circle at 92% 12%, rgba(216, 102, 25, 0.55) 0 120px, transparent 121px),
-    radial-gradient(circle at 76% 88%, rgba(243, 191, 90, 0.6) 0 110px, transparent 111px);
-  opacity: 0.55;
-  z-index: -1;
-}
-
 .shell {
   max-width: 1220px;
   margin: 0 auto;
-  padding: 24px 24px 48px;
+  padding: 18px 24px 40px;
 }
 
 .topbar {
@@ -50,7 +37,8 @@ body::before {
   align-items: center;
   gap: 24px;
   border-bottom: 1px solid var(--line);
-  padding-bottom: 10px;
+  padding-bottom: 12px;
+  margin-bottom: 18px;
 }
 
 .brand {
@@ -99,90 +87,16 @@ body::before {
   color: var(--paper);
 }
 
-.hero {
-  min-height: 280px;
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
-  border-bottom: 1px solid var(--line);
-}
-
-.hero-copy {
-  padding: 42px 28px 34px 0;
-}
-
-.eyebrow {
-  margin: 0 0 16px;
-  color: var(--wine);
-  font-size: 12px;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
 h1,
 h2,
 p {
   margin: 0;
 }
 
-h1 {
-  max-width: 720px;
-  font-size: clamp(44px, 7vw, 92px);
-  line-height: 0.94;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
 h2 {
-  font-size: clamp(24px, 3.2vw, 42px);
+  font-size: clamp(16px, 2vw, 22px);
   line-height: 1;
   letter-spacing: 0;
-}
-
-.hero-copy p:last-child {
-  max-width: 640px;
-  margin-top: 22px;
-  color: var(--muted);
-  font-size: 17px;
-}
-
-.art {
-  position: relative;
-  overflow: hidden;
-  min-height: 280px;
-  background: var(--peach);
-}
-
-.art span {
-  position: absolute;
-  display: block;
-}
-
-.art-one span:nth-child(1) {
-  width: 66%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: var(--orange);
-  top: -34%;
-  left: 17%;
-}
-
-.art-one span:nth-child(2) {
-  width: 70%;
-  height: 68%;
-  border-radius: 999px 999px 0 0;
-  background: var(--orange);
-  bottom: 0;
-  left: 15%;
-}
-
-.art-one span:nth-child(3) {
-  width: 34%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: var(--gold);
-  right: -3%;
-  top: 45%;
-  mix-blend-mode: multiply;
 }
 
 .view {
@@ -197,17 +111,17 @@ h2 {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 0;
-  margin: 28px 0;
+  margin: 0 0 18px;
   border: 1px solid var(--line);
 }
 
 .metric {
-  min-height: 168px;
+  min-height: 132px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border-right: 1px solid var(--line);
-  padding: 18px;
+  padding: 16px;
 }
 
 .metric:last-child {
@@ -222,7 +136,7 @@ h2 {
 }
 
 .metric strong {
-  font-size: clamp(46px, 6vw, 82px);
+  font-size: clamp(40px, 5vw, 66px);
   line-height: 0.85;
   font-weight: 800;
 }
@@ -237,35 +151,35 @@ h2 {
 .main-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
-  gap: 22px;
-  margin-bottom: 22px;
+  gap: 14px;
+  margin-bottom: 14px;
 }
 
 .panel {
   background: rgba(255, 250, 240, 0.86);
   border: 1px solid var(--line);
-  padding: 22px;
+  padding: 12px;
 }
 
 .section-heading {
   display: grid;
   gap: 4px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .activity-list,
 .list {
   display: grid;
-  gap: 10px;
+  gap: 6px;
 }
 
 .activity-item,
 .item {
   display: grid;
-  gap: 10px;
+  gap: 6px;
   border: 1px solid rgba(29, 23, 18, 0.28);
   background: rgba(255, 250, 240, 0.72);
-  padding: 14px;
+  padding: 8px 10px;
 }
 
 .activity-item {
@@ -279,7 +193,7 @@ h2 {
 }
 
 .activity-item strong {
-  font-size: 16px;
+  font-size: 13px;
 }
 
 .activity-item span,
@@ -287,13 +201,14 @@ h2 {
 .muted,
 .soft-copy {
   color: var(--muted);
+  font-size: 12px;
 }
 
 .activity-meta {
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .badge {
@@ -301,7 +216,7 @@ h2 {
   align-items: center;
   border: 1px solid var(--line);
   padding: 3px 8px;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
   text-transform: uppercase;
 }
@@ -324,6 +239,11 @@ h2 {
 .details dd {
   margin: 0;
   font-weight: 700;
+  font-size: 13px;
+}
+
+.details dt {
+  font-size: 12px;
 }
 
 .table-wrap {
@@ -404,7 +324,6 @@ input {
 
 @media (max-width: 920px) {
   .topbar,
-  .hero,
   .main-grid,
   .metrics,
   .config-grid {
@@ -417,7 +336,7 @@ input {
   }
 
   .metric {
-    min-height: 124px;
+    min-height: 108px;
     border-right: 0;
     border-bottom: 1px solid var(--line);
   }

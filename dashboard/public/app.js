@@ -41,7 +41,6 @@ async function loadDashboard() {
   setText("#failed-sources", lastRun?.failedSources ?? "-");
   setText("#new-alerts", lastRun?.newAlerts ?? "-");
 
-  renderHero(lastRun, data.stateError);
   renderQuickSummary(lastRun, state);
   renderRecentActivity(lastRun, state.sourceStats || {});
   renderLastRun(lastRun, data.stateError);
@@ -49,19 +48,6 @@ async function loadDashboard() {
   renderSources(state.sourceStats || {});
   renderErrors(lastRun?.errors || [], data.stateError);
   renderHistory(state.runs || []);
-}
-
-function renderHero(run, error) {
-  const target = document.querySelector("#hero-status");
-  if (error) {
-    target.textContent = error;
-    return;
-  }
-  if (!run) {
-    target.textContent = "El próximo chequeo va a dejar datos acá.";
-    return;
-  }
-  target.textContent = `Última pasada: ${formatDate(run.finishedAt)} · ${run.successfulSources} fuentes ok · ${run.newAlerts} alertas nuevas.`;
 }
 
 function renderQuickSummary(run, state) {
